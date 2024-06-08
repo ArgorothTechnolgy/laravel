@@ -349,4 +349,4 @@ function handleImageError() {
     </div>
     </transition>
 
-</template>
+</template>https://github.com/ArgorothTechnolgy/laravel
