@@ -28,9 +28,9 @@ function handleImageError() {
 
 <template>
     <Head title="Welcome" />
-    <transition appear enter-active-class="animate__animated animate__backInDown"
-    leave-active-class="animate__animated animate__jello" mode="out">
-        <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
+    <transition appear enter-active-class="animate__animated animate__jello"
+    leave-active-class="animate__animated animate__bounceOut" mode="out-in">
+        <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50 ">
         <img
             id="background"
             class="absolute -left-20 top-0 max-w-[877px]"

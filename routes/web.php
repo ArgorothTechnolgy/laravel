@@ -4,7 +4,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -15,9 +14,18 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
+Route::get('/client', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'normal'])->name('dashboard');
+
+
+Route::get('/clinique', function () {
+    return Inertia::render('Home/clinic_dashboard');
+})->middleware(['auth', 'verified', 'admin'])->name('admin');
+
+Route::get('/administration', function () {
+    return Inertia::render('Home/admin_dashboard');
+})->middleware(['auth', 'verified', 'superadmin'])->name('superadmin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,9 +33,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
-
 require __DIR__.'/auth.php';
-
-
